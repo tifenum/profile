@@ -7,9 +7,9 @@ import gamestackTexture from '~/assets/310612999_1630051694181272_89456670093735
 import sliceTextureLarge from '~/assets/1716058500964.jpg';
 import sliceTexturePlaceholder from '~/assets/1716058500964.jpg';
 import sliceTexture from '~/assets/1716058500964.jpg';
-import sprTextureLarge from '~/assets/Screenshot 2024-09-07 194431.png';
-import sprTexturePlaceholder from '~/assets/Screenshot 2024-09-07 194431.png';
-import sprTexture from '~/assets/Screenshot 2024-09-07 194431.png';
+import sprTextureLarge from '~/assets/1706034658002 (1).jpg';
+import sprTexturePlaceholder from '~/assets/1706034658002 (1).jpg';
+import sprTexture from '~/assets/1706034658002 (1).jpg';
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
@@ -18,6 +18,47 @@ import { ProjectSummary } from './project-summary';
 import { useEffect, useRef, useState } from 'react';
 import config from '~/config.json';
 import styles from './home.module.css';
+import SmartSparrow from '../projects.smart-sparrow/route';
+import { ThemeProvider, useTheme } from '~/components/theme-provider';
+import backgroundSprLarge from '~/assets/91.jpg';
+import backgroundSprPlaceholder from '~/assets/457032756_1267351341374843_5415697035943497922_n.jpg';
+import backgroundSpr from '~/assets/457032756_1267351341374843_5415697035943497922_n.png';
+import imageSprLessonBuilderDark from '~/assets/1709755840122.jpg';
+import imageSprLessonBuilderLightLarge from '~/assets/1709755840122.jpg';
+import imageSprLessonBuilderLightPlaceholder from '~/assets/1709755840122.jpg';
+import imageSprLessonBuilderLight from '~/assets/1709755840122.jpg';
+import imageSprLessonBuilderDarkLarge from '~/assets/1709755840122.jpg';
+import imageSprLessonBuilderDarkPlaceholder from '~/assets/1709755840122.jpg';
+import imageSprLessonBuilderDarkPlaceholder2 from '~/assets/1708020927457.jpg';
+import { Suspense, lazy, useMemo } from 'react';
+
+import { media } from '~/utils/style';
+import { Image } from '~/components/image';
+import imageSprBackgroundVolcanismLarge from '~/assets/spr-background-volcanism-large.jpg';
+import imageSprBackgroundVolcanismPlaceholder from '~/assets/spr-background-volcanism-placeholder.jpg';
+import imageSprBackgroundVolcanism from '~/assets/spr-background-volcanism.jpg';
+import videoSprMotionLarge from '~/assets/spr-motion-large.mp4';
+import videoSprMotionPlaceholder from '~/assets/spr-motion-placeholder.jpg';
+import videoSprMotion from '~/assets/spr-motion.mp4';
+import {
+  ProjectBackground,
+  ProjectContainer,
+  ProjectHeader,
+  ProjectImage,
+  ProjectSection,
+  ProjectSectionColumns,
+  ProjectSectionContent,
+  ProjectSectionHeading,
+  ProjectSectionText,
+  ProjectTextRow,
+} from '~/layouts/project';
+const Earth = lazy(() => import('./earth').then(module => ({ default: module.Earth })));
+const EarthSection = lazy(() =>
+  import('./earth').then(module => ({ default: module.EarthSection }))
+);
+const title = 'Designing the future of education';
+const description =
+  'I worked as the design lead on a major iteration of Smart Sparrow’s product. We took the platform in a bold new direction, focusing on becoming the best tool for learning designers.';
 
 // Prefetch draco decoader wasm
 export const links = () => {
@@ -41,8 +82,8 @@ export const links = () => {
 
 export const meta = () => {
   return baseMeta({
-    title: 'Designer + Developer',
-    description: `Design portfolio of ${config.name} — a product designer working on web & mobile apps with a focus on motion, experience design, and accessibility.`,
+    title: 'Engineer + Developer',
+    description: `${config.name}`,
   });
 };
 
@@ -54,7 +95,13 @@ export const Home = () => {
   const projectTwo = useRef();
   const projectThree = useRef();
   const details = useRef();
+  const { theme, toggleTheme } = useTheme();
+  const isDark = theme === 'dark';
+  const themes = ['dark', 'light'];
 
+  const handleThemeChange = index => {
+    toggleTheme(themes[index]);
+  };
   useEffect(() => {
     const sections = [intro, projectOne, projectTwo, projectThree, details];
 
@@ -92,12 +139,11 @@ export const Home = () => {
   }, [visibleSections]);
 
   return (
-    <div className={styles.home}>
+    <><div className={styles.home}>
       <Intro
         id="intro"
         sectionRef={intro}
-        scrollIndicatorHidden={scrollIndicatorHidden}
-      />
+        scrollIndicatorHidden={scrollIndicatorHidden} />
       <ProjectSummary
         id="project-1"
         sectionRef={projectOne}
@@ -115,8 +161,7 @@ export const Home = () => {
               placeholder: sprTexturePlaceholder,
             },
           ],
-        }}
-      />
+        }} />
       <ProjectSummary
         id="project-2"
         alternate
@@ -124,7 +169,7 @@ export const Home = () => {
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
         title="Active Member of Tunis Sports University"
-        description="Design and development for a video game tracking app built in React Native"
+        description="Tunis Sports University is an organization of sports and recreational events with a social and humanitarian character."
 
         model={{
           type: 'phone',
@@ -139,15 +184,14 @@ export const Home = () => {
               placeholder: gamestackTexture2Placeholder,
             },
           ],
-        }}
-      />
+        }} />
       <ProjectSummary
         id="project-3"
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
         title="Passionate about problem solving and thriving in hackathon challenges."
-        description="Passionate about solving problems and thriving in hackathon challenges."
+        description="Participated in nearly every hackathon during the past academic year, actively engaged on the Codeforces platform, and took part in all problem-solving training sessions organized by local university clubs.."
         model={{
           type: 'laptop',
           alt: 'Annotating a biomedical image in the Slice app',
@@ -157,14 +201,249 @@ export const Home = () => {
               placeholder: sliceTexturePlaceholder,
             },
           ],
-        }}
-      />
-      <Profile
+        }} />
+    </div>
+    <ProjectContainer>
+    <ThemeProvider theme="dark" data-invert>
+          <Suspense>
+            <Earth
+              className={styles.earth}
+              hideMeshes={useMemo(
+                () => ['Atmosphere', 'EarthPartial', 'Chunk', 'EarthFull'],
+                []
+              )}
+              position={useMemo(() => [0, 0, 0], [])}
+              labels={useMemo(
+                () => [
+                  {
+                    position: [0.54, 0.19, 0.18],
+                    text: 'Pacific ring of fire',
+                    hidden: true,
+                  },
+                  {
+                    position: [0.47, -0.38, 0.04],
+                    text: 'Ruapehu',
+                    hidden: true,
+                  },
+                  {
+                    position: [0.22, 0.44, -0.35],
+                    text: 'St. Helens',
+                    hidden: true,
+                  },
+                  {
+                    position: [0.16, -0.06, 0.58],
+                    text: 'Krakatoa',
+                    hidden: true,
+                  },
+                  {
+                    position: [0.11, 0.2, -0.56],
+                    text: 'Parícutin',
+                    hidden: true,
+                  },
+                  {
+                    position: [0.52, 0.2, -0.23],
+                    text: 'Kīlauea',
+                    hidden: true,
+                  },
+                  {
+                    position: [-0.24, 0.75, 0.24],
+                    text: 'Mantle',
+                    delay: 800,
+                    hidden: true,
+                  },
+                  {
+                    position: [-0.24, 0.55, 0.24],
+                    text: 'Outer core',
+                    delay: 800,
+                    hidden: true,
+                  },
+                  {
+                    position: [-0.24, 0.35, 0.24],
+                    text: 'Inner core',
+                    delay: 800,
+                    hidden: true,
+                  },
+                ],
+                []
+              )}
+              scale={0.6}
+            >
+              <EarthSection
+                scrim
+                animations={['0:loop']}
+                camera={[0, 0, 1.5]}
+                meshes={['Atmosphere', 'EarthFull']}
+              >
+                <ProjectSection>
+                  <ProjectSectionContent>
+                    <ProjectTextRow center>
+                      <ProjectSectionHeading>
+                        Next-generation learning experiences
+                      </ProjectSectionHeading>
+                      <ProjectImage
+              raised
+              key={theme}
+              srcSet={
+                isDark
+                  ? `${backgroundSpr} 1280w, ${backgroundSpr} 2560w`
+                  : `${backgroundSpr} 1280w, ${backgroundSpr} 2560w`
+              }
+              width={1280}
+              height={800}
+              placeholder={
+                isDark
+                  ? backgroundSpr
+                  : backgroundSpr
+              }
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
+              alt="The aero lesson builder app dragging an audio component into a screen about plant cells."
+            />
+                    </ProjectTextRow>
+                  </ProjectSectionContent>
+                </ProjectSection>
+              </EarthSection>
+              <EarthSection
+                animations={['0:loop']}
+                camera={[0, 0, 2.4]}
+                meshes={['Atmosphere', 'EarthFull']}
+              />
+              <EarthSection
+                animations={['0:loop']}
+                camera={[1.14, -1.39, 0.94]}
+                meshes={['Atmosphere', 'EarthFull']}
+              >
+                <ProjectSection>
+                  <ProjectSectionContent width="xl">
+                    <ProjectTextRow justify="end" width="s">
+                      <ProjectSectionHeading level={4} as="h3">
+                        Bringing 3D into learning
+                      </ProjectSectionHeading>
+                      <ProjectImage
+              raised
+              key={theme}
+              srcSet={
+                isDark
+                  ? `${imageSprLessonBuilderDark} 1280w, ${imageSprLessonBuilderDarkLarge} 2560w`
+                  : `${imageSprLessonBuilderLight} 1280w, ${imageSprLessonBuilderLightLarge} 2560w`
+              }
+              width={1280}
+              height={800}
+              placeholder={
+                isDark
+                  ? imageSprLessonBuilderDarkPlaceholder
+                  : imageSprLessonBuilderLightPlaceholder
+              }
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
+              alt="The aero lesson builder app dragging an audio component into a screen about plant cells."
+            />
+                    </ProjectTextRow>
+                  </ProjectSectionContent>
+                </ProjectSection>
+              </EarthSection>
+              <EarthSection
+                animations={['0:loop']}
+                camera={[1.17, 0.69, -1.47]}
+                meshes={['Atmosphere', 'EarthFull']}
+                labels={[
+                  'Pacific ring of fire',
+                  'Ruapehu',
+                  'St. Helens',
+                  'Krakatoa',
+                  'Parícutin',
+                  'Kīlauea',
+                ]}
+              >
+                <ProjectSection>
+                  <ProjectSectionContent width="xl">
+                    <ProjectTextRow justify="start" width="s">
+                      <ProjectSectionHeading level={4} as="h3">
+                        Interactivity
+                      </ProjectSectionHeading>
+                      <ProjectImage
+              raised
+              key={theme}
+              srcSet={
+                isDark
+                  ? `${backgroundSprLarge} 1280w, ${backgroundSprLarge} 2560w`
+                  : `${backgroundSprLarge} 1280w, ${backgroundSprLarge} 2560w`
+              }
+              width={1280}
+              height={800}
+              placeholder={
+                isDark
+                  ? backgroundSprLarge
+                  : backgroundSprLarge
+              }
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
+              alt="The aero lesson builder app dragging an audio component into a screen about plant cells."
+            />
+                    </ProjectTextRow>
+                  </ProjectSectionContent>
+                </ProjectSection>
+              </EarthSection>
+              <EarthSection
+                animations={['0:loop']}
+                camera={[1.81, 0.51, 0.43]}
+                meshes={['Atmosphere', 'EarthFull']}
+                labels={[
+                  'Pacific ring of fire',
+                  'Ruapehu',
+                  'St. Helens',
+                  'Krakatoa',
+                  'Parícutin',
+                  'Kīlauea',
+                ]}
+              />
+              <EarthSection
+                animations={['0:loop']}
+                camera={[0.37, 1.02, 1.84]}
+                meshes={['EarthPartial', 'Chunk']}
+                labels={['Mantle', 'Outer core', 'Inner core']}
+              >
+                <ProjectSection>
+                  <ProjectSectionContent width="xl">
+                    <ProjectTextRow justify="end" width="s">
+                      <ProjectSectionHeading level={4} as="h3">
+                        Animation
+                      </ProjectSectionHeading>
+                      <ProjectImage
+              raised
+              key={theme}
+              srcSet={
+                isDark
+                  ? `${imageSprLessonBuilderDarkPlaceholder2} 1280w, ${imageSprLessonBuilderDarkPlaceholder2} 2560w`
+                  : `${imageSprLessonBuilderDarkPlaceholder2} 1280w, ${imageSprLessonBuilderDarkPlaceholder2} 2560w`
+              }
+              width={1280}
+              height={800}
+              placeholder={
+                isDark
+                  ? imageSprLessonBuilderDarkPlaceholder2
+                  : imageSprLessonBuilderDarkPlaceholder2
+              }
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
+              alt="The aero lesson builder app dragging an audio component into a screen about plant cells."
+            />  
+                    </ProjectTextRow>
+                  </ProjectSectionContent>
+                </ProjectSection>
+              </EarthSection>
+              <EarthSection
+                scrimReverse
+                animations={['0:loop']}
+                camera={[0.37, 1.02, 1.84]}
+                meshes={['Atmosphere', 'EarthFull']}
+              />
+            </Earth>
+          </Suspense>
+        </ThemeProvider>    
+        </ProjectContainer>
+
+    
+    <Profile
         sectionRef={details}
         visible={visibleSections.includes(details.current)}
-        id="details"
-      />
-      <Footer />
-    </div>
+        id="details" /><Footer /></>
+
   );
 };

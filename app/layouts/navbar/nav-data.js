@@ -13,6 +13,10 @@ export const navLinks = [
     label: 'Contact',
     pathname: '/contact',
   },
+  {
+    label: 'Projects',
+    pathname: '/projects/smart-sparrow',
+  },
 ];
 
 export const socialLinks = [

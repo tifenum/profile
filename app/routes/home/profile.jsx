@@ -1,6 +1,6 @@
-import profileImgLarge from '~/assets/profile-large.jpg';
+import profileImgLarge from '~/assets/1714143689953.jpg';
 import profileImgPlaceholder from '~/assets/1714143689953.jpg';
-import profileImg from '~/assets/profile.jpg';
+import profileImg from '~/assets/1714143689953.jpg';
 import { Button } from '~/components/button';
 import { DecoderText } from '~/components/decoder-text';
 import { Divider } from '~/components/divider';
@@ -41,7 +41,7 @@ const ProfileText = ({ visible, titleId }) => (
 
     Outside of academics, I founded the <Link href="https://www.facebook.com/profile.php?id=61553999858181">"Vanguard Chess Club"</Link>, the first chess club at ENSIT, and actively participate in college clubs and charity work. My interests include ancient history and warfare, and I enjoy problem-solving on platforms like <Link href="https://codeforces.com/">Codeforces</Link>. I’m always eager to collaborate, learn, and make a positive impact.
 
-    Feel free to connect if you’d like to discuss technology, history, or potential opportunities!
+    Feel free to connect if you’d like to discuss technology, history, play chess , or potential opportunities!
 </Text>
 
 
