@@ -1,4 +1,4 @@
 [[redirects]]
   from = "/*"
-  to = "/"
+  to = "/root.jsx"
   status = 200
