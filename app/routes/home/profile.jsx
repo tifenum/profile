@@ -27,17 +27,17 @@ const ProfileText = ({ visible, titleId }) => (
     <Link href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</Link>, 
     <Link href="https://en.wikipedia.org/wiki/JavaScript">JavaScript</Link>, 
     <Link href="https://www.typescriptlang.org/">TypeScript</Link>, and 
-    <Link href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java</Link>, and I’ve gained experience with frameworks like 
-    <Link href="https://angular.io/">Angular</Link>, 
+    <Link href="https://en.wikipedia.org/wiki/Java_(programming_language)"> Java</Link>, and I’ve gained experience with frameworks like 
+    <Link href="https://angular.io/"> Angular</Link>, 
     <Link href="https://www.djangoproject.com/">Django</Link>, 
     <Link href="https://nextjs.org/">Next.js</Link>, 
     <Link href="https://laravel.com/">Laravel</Link>, and 
-    <Link href="https://spring.io/projects/spring-boot">Spring Boot</Link>. 
+    <Link href="https://spring.io/projects/spring-boot"> Spring Boot</Link>. 
     I'm also proficient in tools like <Link href="https://git-scm.com/">Git</Link> and 
-    <Link href="https://github.com/">GitHub</Link>, and I’m deepening my knowledge in 
-    <Link href="https://en.wikipedia.org/wiki/Artificial_intelligence">AI</Link>, 
+    <Link href="https://github.com/"> GitHub</Link>, and I’m deepening my knowledge in  
+    <Link href="https://en.wikipedia.org/wiki/Artificial_intelligence"> AI</Link>, 
     <Link href="https://en.wikipedia.org/wiki/Machine_learning">machine learning</Link>, and 
-    <Link href="https://en.wikipedia.org/wiki/Code_refactoring#Clean_code">clean code</Link> practices.
+    <Link href="https://en.wikipedia.org/wiki/Code_refactoring#Clean_code"> clean code</Link> practices.
 
     Outside of academics, I founded the <Link href="https://www.facebook.com/profile.php?id=61553999858181">"Vanguard Chess Club"</Link>, the first chess club at ENSIT, and actively participate in college clubs and charity work. My interests include ancient history and warfare, and I enjoy problem-solving on platforms like <Link href="https://codeforces.com/">Codeforces</Link>. I’m always eager to collaborate, learn, and make a positive impact.
 
@@ -77,6 +77,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
               >
                 Send me a message
               </Button>
+              
             </div>
             <div className={styles.column}>
               <div className={styles.tag} aria-hidden>

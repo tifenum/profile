@@ -6,17 +6,19 @@ export const navLinks = [
     pathname: '/#project-1',
   },
   {
+    label: 'Earth',
+    pathname: '/#earth',
+  },
+  {
     label: 'Details',
     pathname: '/#details',
   },
+
   {
     label: 'Contact',
     pathname: '/contact',
   },
-  {
-    label: 'Projects',
-    pathname: '/projects/smart-sparrow',
-  },
+
 ];
 
 export const socialLinks = [

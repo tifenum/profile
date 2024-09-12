@@ -1,12 +1,12 @@
-import gamestackTexture2Large from '~/assets/310438812_1630051494181292_6338321910946070443_n.jpg';
-import gamestackTexture2Placeholder from '~/assets/310438812_1630051494181292_6338321910946070443_n.jpg'; 
-import gamestackTexture2 from '~/assets/310438812_1630051494181292_6338321910946070443_n.jpg';
-import gamestackTextureLarge from '~/assets/310612999_1630051694181272_894566700937356929_n.jpg';
-import gamestackTexturePlaceholder from '~/assets/310612999_1630051694181272_894566700937356929_n.jpg';
-import gamestackTexture from '~/assets/310612999_1630051694181272_894566700937356929_n.jpg';
-import sliceTextureLarge from '~/assets/1716058500964.jpg';
-import sliceTexturePlaceholder from '~/assets/1716058500964.jpg';
-import sliceTexture from '~/assets/1716058500964.jpg';
+import gamestackTexture2Large from '~/assets/Screenshot 2024-09-12 161111.png';
+import gamestackTexture2Placeholder from '~/assets/Screenshot 2024-09-12 161111.png'; 
+import gamestackTexture2 from '~/assets/Screenshot 2024-09-12 161111.png';
+import gamestackTextureLarge from '~/assets/Screenshot 2024-09-12 161223.png';
+import gamestackTexturePlaceholder from '~/assets/Screenshot 2024-09-12 161223.png';
+import gamestackTexture from '~/assets/Screenshot 2024-09-12 161223.png';
+import sliceTextureLarge from '~/assets/Screenshot 2024-09-12 160847.png';
+import sliceTexturePlaceholder from '~/assets/Screenshot 2024-09-12 160847.png';
+import sliceTexture from '~/assets/Screenshot 2024-09-12 160847.png';
 import sprTextureLarge from '~/assets/1706034658002 (1).jpg';
 import sprTexturePlaceholder from '~/assets/1706034658002 (1).jpg';
 import sprTexture from '~/assets/1706034658002 (1).jpg';
@@ -20,16 +20,16 @@ import config from '~/config.json';
 import styles from './home.module.css';
 import SmartSparrow from '../projects.smart-sparrow/route';
 import { ThemeProvider, useTheme } from '~/components/theme-provider';
-import backgroundSprLarge from '~/assets/91.jpg';
+import backgroundSprLarge from '~/assets/Screenshot 2024-09-12 155240.png';
 import backgroundSprPlaceholder from '~/assets/457032756_1267351341374843_5415697035943497922_n.jpg';
-import backgroundSpr from '~/assets/457032756_1267351341374843_5415697035943497922_n.png';
-import imageSprLessonBuilderDark from '~/assets/1709755840122.jpg';
-import imageSprLessonBuilderLightLarge from '~/assets/1709755840122.jpg';
-import imageSprLessonBuilderLightPlaceholder from '~/assets/1709755840122.jpg';
-import imageSprLessonBuilderLight from '~/assets/1709755840122.jpg';
-import imageSprLessonBuilderDarkLarge from '~/assets/1709755840122.jpg';
-import imageSprLessonBuilderDarkPlaceholder from '~/assets/1709755840122.jpg';
-import imageSprLessonBuilderDarkPlaceholder2 from '~/assets/1708020927457.jpg';
+import backgroundSpr from '~/assets/Screenshot 2024-09-12 153944.png';
+import imageSprLessonBuilderDark from '~/assets/Screenshot 2024-09-12 154828.png';
+import imageSprLessonBuilderLightLarge from '~/assets/Screenshot 2024-09-12 154828.png';
+import imageSprLessonBuilderLightPlaceholder from '~/assets/Screenshot 2024-09-12 154828.png';
+import imageSprLessonBuilderLight from '~/assets/Screenshot 2024-09-12 154828.png';
+import imageSprLessonBuilderDarkLarge from '~/assets/Screenshot 2024-09-12 154828.png';
+import imageSprLessonBuilderDarkPlaceholder from '~/assets/Screenshot 2024-09-12 154828.png';
+import imageSprLessonBuilderDarkPlaceholder2 from '~/assets/Screenshot 2024-09-12 155619.png';
 import { Suspense, lazy, useMemo } from 'react';
 
 import { media } from '~/utils/style';
@@ -204,7 +204,8 @@ export const Home = () => {
         }} />
     </div>
     <ProjectContainer>
-    <ThemeProvider theme="dark" data-invert>
+      
+    <ThemeProvider id="earth" theme="dark" data-invert>
           <Suspense>
             <Earth
               className={styles.earth}
@@ -278,26 +279,30 @@ export const Home = () => {
                   <ProjectSectionContent>
                     <ProjectTextRow center>
                       <ProjectSectionHeading>
-                        Next-generation learning experiences
+                        Next generation
                       </ProjectSectionHeading>
-                      <ProjectImage
-              raised
-              key={theme}
-              srcSet={
-                isDark
-                  ? `${backgroundSpr} 1280w, ${backgroundSpr} 2560w`
-                  : `${backgroundSpr} 1280w, ${backgroundSpr} 2560w`
-              }
-              width={1280}
-              height={800}
-              placeholder={
-                isDark
-                  ? backgroundSpr
-                  : backgroundSpr
-              }
-              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
-              alt="The aero lesson builder app dragging an audio component into a screen about plant cells."
-            />
+                        <ProjectImage
+                raised
+                key={theme}
+                srcSet={
+                  isDark
+                    ? `${backgroundSpr} 1280w, ${backgroundSpr} 2560w`
+                    : `${backgroundSpr} 1280w, ${backgroundSpr} 2560w`
+                }
+                width={1280}
+                height={800}
+                placeholder={
+                  isDark
+                    ? backgroundSpr
+                    : backgroundSpr
+                }
+                style={{ opacity: 0.6,
+                  borderRadius: '500px'  // Adjust this value as needed
+                 }}
+
+                sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
+                alt="The aero lesson builder app dragging an audio component into a screen about plant cells."
+              />
                     </ProjectTextRow>
                   </ProjectSectionContent>
                 </ProjectSection>
@@ -316,7 +321,7 @@ export const Home = () => {
                   <ProjectSectionContent width="xl">
                     <ProjectTextRow justify="end" width="s">
                       <ProjectSectionHeading level={4} as="h3">
-                        Bringing 3D into learning
+                        Traveling
                       </ProjectSectionHeading>
                       <ProjectImage
               raised
@@ -333,6 +338,8 @@ export const Home = () => {
                   ? imageSprLessonBuilderDarkPlaceholder
                   : imageSprLessonBuilderLightPlaceholder
               }
+              style={{ opacity: 0.6 }}
+
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
               alt="The aero lesson builder app dragging an audio component into a screen about plant cells."
             />
@@ -357,7 +364,7 @@ export const Home = () => {
                   <ProjectSectionContent width="xl">
                     <ProjectTextRow justify="start" width="s">
                       <ProjectSectionHeading level={4} as="h3">
-                        Interactivity
+                        Charity
                       </ProjectSectionHeading>
                       <ProjectImage
               raised
@@ -374,6 +381,8 @@ export const Home = () => {
                   ? backgroundSprLarge
                   : backgroundSprLarge
               }
+              style={{ opacity: 0.7 }}
+
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
               alt="The aero lesson builder app dragging an audio component into a screen about plant cells."
             />
@@ -404,7 +413,7 @@ export const Home = () => {
                   <ProjectSectionContent width="xl">
                     <ProjectTextRow justify="end" width="s">
                       <ProjectSectionHeading level={4} as="h3">
-                        Animation
+                        Friends
                       </ProjectSectionHeading>
                       <ProjectImage
               raised
@@ -421,6 +430,8 @@ export const Home = () => {
                   ? imageSprLessonBuilderDarkPlaceholder2
                   : imageSprLessonBuilderDarkPlaceholder2
               }
+              style={{ opacity: 0.7 }}
+
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
               alt="The aero lesson builder app dragging an audio component into a screen about plant cells."
             />  
