@@ -22,6 +22,7 @@ const config = {
       assetsInclude: ['**/*.glb', '**/*.hdr', '**/*.glsl'],
       build: {
         assetsInlineLimit: 1024,
+        outDir: 'dist',  // Specify the output directory here
       },
     });
   },
